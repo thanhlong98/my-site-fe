@@ -1,7 +1,7 @@
 import '../styles/globals.scss'
 import { ApolloProvider } from '@apollo/client'
 import { useApollo } from '@graphql/apollo'
-import store from '@store'
+import { store } from '@store'
 import Head from 'next/head'
 import Router from 'next/router'
 import NProgress from 'nprogress'

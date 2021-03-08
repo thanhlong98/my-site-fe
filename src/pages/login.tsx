@@ -3,7 +3,7 @@ import Container from '@components/Container'
 import LoginForm from '@components/LoginForm'
 import { LOGIN_FACEBOOK } from '@graphql/mutations'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layouts'
+import { MainLayout } from '@layout'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
@@ -26,10 +26,10 @@ const LoginPage = () => {
   }
 
   return (
-    <MainLayout>
+    <MainLayout hasFooter={false}>
       <Container>
         <h3>Login Page</h3>
-        <div className="border py-4 px-2 bg-white rounded shadow-lg">
+        <div className="border py-6 px-5 bg-white rounded shadow-lg">
           <LoginForm />
           <FacebookLogin
             appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}

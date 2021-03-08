@@ -1,23 +1,13 @@
-import { useQuery } from '@apollo/client'
-import Container from '@components/Container'
+import { Intro } from '@components/HomePage'
 import { HELLO } from '@graphql/queries'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layouts'
+import { MainLayout } from '@layout'
 import { GetServerSideProps } from 'next'
-import Head from 'next/head'
 
 const HomePage = () => {
-  const { data, loading } = useQuery(HELLO)
-
   return (
-    <MainLayout>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Container>
-        <p>{data?.hello}</p>
-      </Container>
+    <MainLayout hasFooter={false}>
+      <Intro />
     </MainLayout>
   )
 }

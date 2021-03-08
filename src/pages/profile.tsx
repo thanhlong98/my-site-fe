@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client'
 import Container from '@components/Container'
 import { ME } from '@graphql/queries'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layouts'
+import { MainLayout } from '@layout'
 import { GetServerSideProps, NextPage } from 'next'
 
 const ProfilePage: NextPage<{}> = () => {

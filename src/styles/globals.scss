@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Regular.ttf');
+}
+
+@import './carousel.scss';
+@import './layout.scss';
+@import './modal.scss';
+
+button {
+  @apply focus:outline-none;
+}

@@ -1,4 +1,4 @@
-import { MainLayout } from '@layouts'
+import { MainLayout } from '@layout'
 import React from 'react'
 
 const TodosPage = () => {

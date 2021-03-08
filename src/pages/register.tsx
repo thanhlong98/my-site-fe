@@ -1,12 +1,12 @@
 import Container from '@components/Container'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layouts'
+import { MainLayout } from '@layout'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 
 const RegisterPage = () => {
   return (
-    <MainLayout>
+    <MainLayout hasFooter={false}>
       <Container>
         <h3>Register page</h3>
         <div>

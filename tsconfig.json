@@ -24,7 +24,7 @@
       "@interfaces": ["./src/interfaces"],
       "@context": ["./src/context"],
       "@hocs": ["./src/hocs"],
-      "@layouts": ["./src/layouts"],
+      "@layout": ["./src/layout"],
       "@store": ["./src/store"],
       "@hooks": ["./src/hooks"]
     }

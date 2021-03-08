@@ -1,0 +1,13 @@
+.intro-container {
+  @apply relative w-full h-screen flex items-center justify-center;
+
+  .intro-carousel {
+    @apply absolute top-0 left-0 w-full h-full;
+    z-index: -1;
+
+    &::after {
+      content: '';
+      @apply absolute top-0 left-0 w-full h-full bg-black opacity-50;
+    }
+  }
+}
