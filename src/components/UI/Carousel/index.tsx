@@ -38,6 +38,7 @@ const Carousel = () => {
             layout="fill"
             objectFit="cover"
             objectPosition="center"
+            quality={40}
           />
         </div>
       ))}

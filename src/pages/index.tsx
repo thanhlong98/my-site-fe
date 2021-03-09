@@ -6,7 +6,7 @@ import { GetServerSideProps } from 'next'
 
 const HomePage = () => {
   return (
-    <MainLayout hasFooter={false}>
+    <MainLayout hasFooter={false} mode="dark">
       <Intro />
     </MainLayout>
   )

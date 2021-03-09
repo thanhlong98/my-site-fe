@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@graphql/*": ["./src/graphql/*"],
-      "@styles/*": ["./src/assets/styles/*"],
+      "@styles/*": ["./src/styles/*"],
       "@components/*": ["./src/components/*"],
       "@constants": ["src/constants"],
       "@configs": ["src/configs"],
@@ -26,7 +26,8 @@
       "@hocs": ["./src/hocs"],
       "@layout": ["./src/layout"],
       "@store": ["./src/store"],
-      "@hooks": ["./src/hooks"]
+      "@hooks": ["./src/hooks"],
+      "@ui/*": ["./src/components/UI/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

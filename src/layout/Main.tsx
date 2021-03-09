@@ -1,4 +1,4 @@
-import { modals } from '@components/Modal'
+import { modals } from '@components/UI/Modal'
 import { useAuth } from '@hooks'
 import { RootState, setModal } from '@store'
 import { useRouter } from 'next/router'
@@ -11,22 +11,23 @@ import styles from './styles.module.scss'
 type Props = {
   hasHeader?: boolean
   hasFooter?: boolean
+  mode?: 'light' | 'dark'
 }
 
 export const MainLayout: React.FC<Props> = ({
   children,
   hasHeader = true,
   hasFooter = true,
+  mode = 'light',
 }) => {
   const { me } = useAuth()
-  const router = useRouter()
   const { modalName } = useSelector((state: RootState) => state.share)
   const dispatch = useDispatch()
 
   return (
     <>
       <div className={`${styles['container']}`}>
-        {hasHeader && <HeaderLayout currentUser={me} />}
+        {hasHeader && <HeaderLayout currentUser={me} mode={mode} />}
         <main className="">{children}</main>
         {hasFooter && <FooterLayout />}
       </div>

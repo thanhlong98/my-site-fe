@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client'
 import { LOGIN } from '@graphql/mutations'
 import React, { useState } from 'react'
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const [userInfo, setUserInfo] = useState({
     email: 'long1@gmail.com',
     password: '123456',
@@ -24,6 +24,7 @@ const LoginForm = () => {
       console.log(error)
     }
   }
+
   return (
     <form>
       <div className="mb-4">
@@ -61,5 +62,3 @@ const LoginForm = () => {
     </form>
   )
 }
-
-export default LoginForm

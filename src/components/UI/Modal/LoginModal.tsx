@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client'
-import LoginForm from '@components/LoginForm'
+import { LoginForm } from '@components/LoginPage'
 import { LOGIN_FACEBOOK } from '@graphql/mutations'
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
