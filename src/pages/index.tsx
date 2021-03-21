@@ -3,11 +3,13 @@ import { HELLO } from '@graphql/queries'
 import { withServerSideProps } from '@hocs'
 import { MainLayout } from '@layout'
 import { GetServerSideProps } from 'next'
+import { Button } from 'antd'
 
 const HomePage = () => {
   return (
     <MainLayout hasFooter={false} mode="dark">
       <Intro />
+      <Button>Click</Button>
     </MainLayout>
   )
 }

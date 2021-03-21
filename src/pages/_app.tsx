@@ -1,4 +1,4 @@
-import '../styles/globals.scss'
+import '../styles/globals.less'
 import { ApolloProvider } from '@apollo/client'
 import { useApollo } from '@graphql/apollo'
 import { store } from '@store'
