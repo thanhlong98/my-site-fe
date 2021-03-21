@@ -27,7 +27,7 @@
       "@layout": ["./src/layout"],
       "@store": ["./src/store"],
       "@hooks": ["./src/hooks"],
-      "@ui/*": ["./src/components/UI/*"]
+      "@ui": ["./src/components/UI"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

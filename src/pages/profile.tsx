@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client'
-import Container from '@ui/Container'
+import { Container } from '@ui'
 import { ME } from '@graphql/queries'
 import { withServerSideProps } from '@hocs'
 import { MainLayout } from '@layout'

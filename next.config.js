@@ -4,6 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withPlugins([
-  [withBundleAnalyzer],
+  // [withBundleAnalyzer],
   // your other plugins here
 ])

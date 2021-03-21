@@ -1,4 +1,4 @@
-import Container from '@ui/Container'
+import { Container } from '@ui'
 import { withServerSideProps } from '@hocs'
 import { MainLayout } from '@layout'
 import { GetServerSideProps } from 'next'

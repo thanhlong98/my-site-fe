@@ -1,4 +1,4 @@
-import { modals } from '@components/UI/Modal'
+import { modals } from '@components/UI'
 import { useAuth } from '@hooks'
 import { RootState, setModal } from '@store'
 import { useRouter } from 'next/router'
@@ -6,7 +6,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FooterLayout from './Footer'
 import HeaderLayout from './Header'
-import styles from './styles.module.scss'
 
 type Props = {
   hasHeader?: boolean
@@ -26,7 +25,7 @@ export const MainLayout: React.FC<Props> = ({
 
   return (
     <>
-      <div className={`${styles['container']}`}>
+      <div>
         {hasHeader && <HeaderLayout currentUser={me} mode={mode} />}
         <main className="">{children}</main>
         {hasFooter && <FooterLayout />}

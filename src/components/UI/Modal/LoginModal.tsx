@@ -22,7 +22,7 @@ const LoginModal = () => {
   }
 
   return (
-    <div className="bg-white px-4 py-5 border rounded shadow-xl">
+    <div>
       <h3>Login</h3>
       <LoginForm />
       <FacebookLogin

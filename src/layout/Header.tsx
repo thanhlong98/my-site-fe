@@ -33,11 +33,9 @@ const HeaderLayout: React.FC<Props> = ({ currentUser, mode }) => {
         <div className="navbar__logo">
           <Link href="/">
             <a className={`navbar__logo__link`}>
-              <Image
+              <img
                 src={mode === 'light' ? '/logo-black.png' : '/logo.png'}
                 alt="logo"
-                width={120}
-                height={41}
               />
             </a>
           </Link>

@@ -1,4 +1,4 @@
-import Container from '@ui/Container'
+import { Container } from '@ui'
 import { NextPage } from 'next'
 
 const Custom404: NextPage<{}> = () => {

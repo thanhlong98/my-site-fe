@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client'
 import { LOGIN } from '@graphql/mutations'
 import React, { useState } from 'react'
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const [userInfo, setUserInfo] = useState({
     email: 'long1@gmail.com',
     password: '123456',

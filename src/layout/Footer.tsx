@@ -1,4 +1,4 @@
-import Container from '@ui/Container'
+import { Container } from '@ui'
 import React from 'react'
 
 const FooterLayout = () => {
