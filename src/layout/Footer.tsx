@@ -1,12 +1,7 @@
-import { Container } from '@ui'
 import React from 'react'
 
 const FooterLayout = () => {
-  return (
-    <footer>
-      <Container>Đây là footer</Container>
-    </footer>
-  )
+  return <footer className="container">Đây là footer</footer>
 }
 
 export default FooterLayout

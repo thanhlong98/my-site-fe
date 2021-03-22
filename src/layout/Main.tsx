@@ -6,6 +6,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FooterLayout from './Footer'
 import HeaderLayout from './Header'
+import './styles.less'
 
 type Props = {
   hasHeader?: boolean
