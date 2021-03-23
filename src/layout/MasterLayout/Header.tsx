@@ -1,22 +1,21 @@
 import { ModalsType } from '@constants'
 import { logout, setModal } from '@store'
-import Image from 'next/image'
+import { Button } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 
 type Props = {
-  currentUser: any
   mode?: 'light' | 'dark'
+  currentUser: any
 }
 
 type ModalAuth = ModalsType.LOGIN | ModalsType.REGISTER
 
-const HeaderLayout: React.FC<Props> = ({ currentUser, mode }) => {
+const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
   const dispatch = useDispatch()
   const router = useRouter()
-  const [showUserMenu, setShowUserMenu] = useState(false)
 
   const handleClickAuth = (type: ModalAuth) => {
     dispatch(setModal({ modalName: type }))
@@ -40,9 +39,13 @@ const HeaderLayout: React.FC<Props> = ({ currentUser, mode }) => {
         </Link>
       </div>
 
-      {!['/login', '/register'].includes(router.route) && (
+      {currentUser ? (
+        <Button onClick={handleLogout}>Đăng xuất</Button>
+      ) : (
         <>
-          <Link href="/login">Đăng nhập</Link>
+          {!['/login', '/register'].includes(router.route) && (
+            <Link href="/login">Đăng nhập</Link>
+          )}
         </>
       )}
     </nav>

@@ -1,58 +1,59 @@
 import { useMutation } from '@apollo/client'
 import { LOGIN } from '@graphql/mutations'
-import React, { useState } from 'react'
+import { Button, Form, Input, notification } from 'antd'
+import React from 'react'
 
 export const LoginForm = () => {
-  const [userInfo, setUserInfo] = useState({
-    email: 'long1@gmail.com',
-    password: '123456',
-  })
-  const [loginLocal] = useMutation(LOGIN)
+  const [form] = Form.useForm()
+  const [loginLocal, { loading }] = useMutation(LOGIN)
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-
+  const handleSubmit = async (values) => {
     try {
-      const { data } = await loginLocal({
-        variables: {
-          ...userInfo,
-        },
-      })
+      await loginLocal({ variables: { ...values } })
 
+      notification.success({
+        placement: 'bottomRight',
+        duration: 3,
+        message: 'Đăng nhập thành công',
+      })
       window.location.href = '/'
     } catch (error) {
       console.log(error)
+      notification.error({
+        placement: 'bottomRight',
+        duration: 3,
+        message: 'Đăng nhập thất bại',
+      })
     }
   }
 
   return (
-    <form>
-      <div>
-        <label>Email</label>
-        <input
-          id="email"
-          name="email"
-          placeholder="email"
-          value={userInfo.email}
-          onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="password"
-          value={userInfo.password}
-          onChange={(e) =>
-            setUserInfo({ ...userInfo, password: e.target.value })
-          }
-        />
-      </div>
-      <button type="submit" onClick={handleSubmit}>
-        Đăng nhập
-      </button>
-    </form>
+    <Form form={form} name="login" layout="vertical" onFinish={handleSubmit}>
+      <Form.Item
+        name="email"
+        rules={[{ required: true, message: 'Bạn chưa nhập mật email' }]}
+      >
+        <Input size="large" placeholder="Email" />
+      </Form.Item>
+
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: 'Bạn chưa nhập mật khẩu' }]}
+      >
+        <Input.Password size="large" placeholder="Mật khẩu" />
+      </Form.Item>
+
+      <Form.Item style={{ marginBottom: 0 }}>
+        <Button
+          size="large"
+          type="primary"
+          block
+          loading={loading}
+          htmlType="submit"
+        >
+          Đăng nhập
+        </Button>
+      </Form.Item>
+    </Form>
   )
 }

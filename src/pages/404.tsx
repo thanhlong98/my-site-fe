@@ -18,7 +18,7 @@ const Custom404: NextPage<{}> = () => {
         </svg>
         <h1>Page not found</h1>
         <p>
-          <Link href="#">Home</Link>
+          <Link href="/">Home</Link>
         </p>
         <p>
           <Link href="/login">Login</Link>

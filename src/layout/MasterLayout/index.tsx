@@ -1,7 +1,6 @@
 import { modals } from '@components/UI'
 import { useAuth } from '@hooks'
 import { RootState, setModal } from '@store'
-import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FooterLayout from './Footer'
@@ -14,7 +13,7 @@ type Props = {
   mode?: 'light' | 'dark'
 }
 
-export const MainLayout: React.FC<Props> = ({
+export const MasterLayout: React.FC<Props> = ({
   children,
   hasHeader = true,
   hasFooter = true,
@@ -26,11 +25,11 @@ export const MainLayout: React.FC<Props> = ({
 
   return (
     <>
-      <div>
-        {hasHeader && <HeaderLayout currentUser={me} mode={mode} />}
-        <main className="">{children}</main>
-        {hasFooter && <FooterLayout />}
-      </div>
+      {hasHeader && <HeaderLayout mode={mode} currentUser={me} />}
+
+      <main className="">{children}</main>
+
+      {hasFooter && <FooterLayout />}
 
       <div
         className={`modal-global ${modalName ? 'active' : ''}`}

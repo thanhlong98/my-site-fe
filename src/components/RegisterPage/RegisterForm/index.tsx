@@ -1,23 +1,46 @@
+import { useMutation } from '@apollo/client'
+import { REGISTER } from '@graphql/mutations'
 import { Button, DatePicker, Form, Input, Select } from 'antd'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 const { Option } = Select
 
 export const RegisterForm = () => {
   const [form] = Form.useForm()
+  const router = useRouter()
+  const [reigster, { loading }] = useMutation(REGISTER)
 
-  const handleSubmit = (values) => {
-    console.log(values)
+  const handleSubmit = async (values) => {
+    try {
+      delete values.rePassword
+      delete values.yearOfBirth
+
+      const { data, errors } = await reigster({
+        variables: {
+          input: values,
+        },
+      })
+
+      if (data) {
+        router.push('/login')
+      }
+    } catch (errors) {
+      errors.graphQLErrors.forEach((error) => {
+        if (error.extensions.code === 'BAD_USER_INPUT') {
+          form.setFields(
+            error.extensions.fields.map((errorInput) => ({
+              name: errorInput.name,
+              errors: errorInput.message,
+            }))
+          )
+        }
+      })
+    }
   }
 
   return (
-    <Form
-      form={form}
-      name="register"
-      layout="vertical"
-      onFinish={handleSubmit}
-      initialValues={{ remember: true }}
-    >
+    <Form form={form} name="register" layout="vertical" onFinish={handleSubmit}>
       <Form.Item style={{ marginBottom: 0 }}>
         <Form.Item
           name="firstName"
@@ -129,8 +152,14 @@ export const RegisterForm = () => {
         <Input.Password size="large" placeholder="Xác nhận mật khẩu" />
       </Form.Item>
 
-      <Form.Item>
-        <Button size="large" type="primary" block htmlType="submit">
+      <Form.Item style={{ marginBottom: 0 }}>
+        <Button
+          size="large"
+          type="primary"
+          block
+          loading={loading}
+          htmlType="submit"
+        >
           Đăng ký
         </Button>
       </Form.Item>

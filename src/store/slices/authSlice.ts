@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { destroyCookie } from 'nookies'
 
 const initialState = {
-  username: '',
+  user: null,
 }
 
 const authSlice = createSlice({
@@ -10,11 +10,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, action) {
-      state.username = action.payload.username
+      state.user = action.payload.user
     },
     logout(state, action) {
       destroyCookie(null, 'access-token')
-      state.username = ''
+      state.user = null
     },
   },
 })

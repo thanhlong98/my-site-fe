@@ -1,1 +1,2 @@
-export * from './Main'
+export * from './MasterLayout'
+export * from './LoginRegisterLayout'

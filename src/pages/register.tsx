@@ -1,42 +1,39 @@
 import { RegisterForm } from '@components/RegisterPage'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layout'
-import { Col, Row } from 'antd'
-import { GetServerSideProps } from 'next'
-import React from 'react'
 import { Typography } from 'antd'
+import { motion, Variants } from 'framer-motion'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link'
+import React from 'react'
 
 const { Title } = Typography
 
+const easing = [0.6, -0.05, 0.01, 0.99]
+
+const fadeInUp: Variants = {
+  initial: {
+    y: 30,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+}
+
 const RegisterPage = () => {
   return (
-    <MainLayout hasHeader={false} hasFooter={false}>
-      <Row className="register-page">
-        <Col xs={0} sm={0} md={12}>
-          <div className="register-img"></div>
-        </Col>
-        <Col xs={24} sm={24} md={12}>
-          <Row justify="center" style={{ height: '100%' }}>
-            <Col xs={24} md={22} lg={18}>
-              <div className="register-container">
-                <div className="wrapper-form">
-                  <Link href="/">
-                    <a className="logo">
-                      <img src="/omg-large.png" />
-                    </a>
-                  </Link>
+    <motion.div variants={fadeInUp}>
+      <Title level={4}>Đăng ký</Title>
 
-                  <Title level={4}>Đăng ký</Title>
+      <RegisterForm />
 
-                  <RegisterForm />
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </MainLayout>
+      <Link href="/login">Đăng nhập</Link>
+    </motion.div>
   )
 }
 

@@ -1,13 +1,13 @@
 import { HELLO } from '@graphql/queries'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layout'
+import { MasterLayout } from '@layout'
 import { GetServerSideProps } from 'next'
 
 const HomePage = () => {
   return (
-    <MainLayout>
+    <MasterLayout>
       <div className="container">Hello World</div>
-    </MainLayout>
+    </MasterLayout>
   )
 }
 

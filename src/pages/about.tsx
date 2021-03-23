@@ -1,7 +1,12 @@
+import { MasterLayout } from '@layout'
 import React from 'react'
 
 const AboutPage = () => {
-  return <div>Hello World</div>
+  return (
+    <MasterLayout>
+      <div>Hello World</div>
+    </MasterLayout>
+  )
 }
 
 export default AboutPage

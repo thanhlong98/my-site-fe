@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client'
 import { ME } from '@graphql/queries'
 import { withServerSideProps } from '@hocs'
-import { MainLayout } from '@layout'
+import { MasterLayout } from '@layout'
 import { GetServerSideProps, NextPage } from 'next'
 
 const ProfilePage: NextPage<{}> = () => {
@@ -16,9 +16,9 @@ const ProfilePage: NextPage<{}> = () => {
   }
 
   return (
-    <MainLayout>
+    <MasterLayout>
       <div>{JSON.stringify(data)}</div>
-    </MainLayout>
+    </MasterLayout>
   )
 }
 

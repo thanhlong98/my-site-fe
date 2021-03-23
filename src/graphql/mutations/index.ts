@@ -9,8 +9,8 @@ export const LOGIN = gql`
 `
 
 export const REGISTER = gql`
-  mutation($fields: RegisterInput!) {
-    register(input: $fields) {
+  mutation($input: CreateUserInput!) {
+    register(input: $input) {
       _id
       email
       createdAt
