@@ -1,4 +1,4 @@
-import { RegisterForm } from '@components/RegisterPage'
+import { SocialForm, RegisterForm } from '@components/LoginRegisterPage'
 import { withServerSideProps } from '@hocs'
 import { Typography } from 'antd'
 import { motion, Variants } from 'framer-motion'
@@ -32,7 +32,10 @@ const RegisterPage = () => {
 
       <RegisterForm />
 
-      <Link href="/login">Đăng nhập</Link>
+      <div style={{ margin: '10px 0', textAlign: 'right' }}>
+        <Link href="/login">Bạn đã có tài khoản</Link>
+      </div>
+      <SocialForm />
     </motion.div>
   )
 }

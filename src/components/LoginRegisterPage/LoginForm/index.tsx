@@ -9,20 +9,29 @@ export const LoginForm = () => {
 
   const handleSubmit = async (values) => {
     try {
-      await loginLocal({ variables: { ...values } })
+      const { data } = await loginLocal({ variables: { ...values } })
 
-      notification.success({
-        placement: 'bottomRight',
-        duration: 3,
-        message: 'Đăng nhập thành công',
-      })
-      window.location.href = '/'
-    } catch (error) {
-      console.log(error)
-      notification.error({
-        placement: 'bottomRight',
-        duration: 3,
-        message: 'Đăng nhập thất bại',
+      if (data) {
+        notification.success({
+          placement: 'bottomRight',
+          duration: 3,
+          message: 'Đăng nhập thành công',
+        })
+
+        window.location.href = '/'
+      }
+    } catch (errors) {
+      console.log(errors)
+
+      errors.graphQLErrors.forEach((error) => {
+        if (error.extensions.code === 'BAD_USER_INPUT') {
+          form.setFields(
+            error.extensions.fields.map((errorInput) => ({
+              name: errorInput.name,
+              errors: errorInput.message,
+            }))
+          )
+        }
       })
     }
   }

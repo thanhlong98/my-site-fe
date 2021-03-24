@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client'
-import { LoginForm } from '@components/LoginPage'
+import { LoginForm } from '@components/LoginRegisterPage'
 import { LOGIN_FACEBOOK } from '@graphql/mutations'
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
@@ -25,12 +25,6 @@ const LoginModal = () => {
     <div>
       <h3>Login</h3>
       <LoginForm />
-      <FacebookLogin
-        appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
-        autoLoad={false}
-        fields="name,email,picture"
-        callback={responseFacebook}
-      />
     </div>
   )
 }

@@ -1,14 +1,12 @@
 import { useMutation } from '@apollo/client'
 import { REGISTER } from '@graphql/mutations'
-import { Button, DatePicker, Form, Input, Select } from 'antd'
-import { useRouter } from 'next/router'
+import { Button, DatePicker, Form, Input, notification, Select } from 'antd'
 import React from 'react'
 
 const { Option } = Select
 
 export const RegisterForm = () => {
   const [form] = Form.useForm()
-  const router = useRouter()
   const [reigster, { loading }] = useMutation(REGISTER)
 
   const handleSubmit = async (values) => {
@@ -23,9 +21,17 @@ export const RegisterForm = () => {
       })
 
       if (data) {
-        router.push('/login')
+        notification.success({
+          placement: 'bottomRight',
+          duration: 3,
+          message: 'Đăng nhập thành công',
+        })
+        
+        window.location.href = '/'
       }
     } catch (errors) {
+      console.log(errors)
+
       errors.graphQLErrors.forEach((error) => {
         if (error.extensions.code === 'BAD_USER_INPUT') {
           form.setFields(

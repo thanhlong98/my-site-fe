@@ -36,14 +36,39 @@
           justify-content: center;
 
           &.btn-login-facebook {
+            background-color: #45619d;
+            border-color: unset;
+
+            &:hover,
+            &:focus {
+              border-color: unset !important;
+            }
           }
 
           &.btn-login-github {
-            background-color: '#24292e';
-            color: '#fff';
+            background-color: #24292e !important;
+            color: #fff !important;
+
+            &:hover,
+            &:focus {
+              border-color: unset !important;
+            }
           }
 
           &.btn-login-google {
+            border-top-color: #ea4234;
+            border-right-color: #fabd2f;
+            border-bottom-color: #5eac4e;
+            border-left-color: #0186f9;
+
+            &:hover,
+            &:focus {
+              color: unset;
+              border-top-color: #ea4234;
+              border-right-color: #fabd2f;
+              border-bottom-color: #5eac4e;
+              border-left-color: #0186f9;
+            }
           }
         }
       }

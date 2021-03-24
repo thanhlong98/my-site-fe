@@ -11,10 +11,7 @@ export const LOGIN = gql`
 export const REGISTER = gql`
   mutation($input: CreateUserInput!) {
     register(input: $input) {
-      _id
-      email
-      createdAt
-      updatedAt
+      accessToken
     }
   }
 `

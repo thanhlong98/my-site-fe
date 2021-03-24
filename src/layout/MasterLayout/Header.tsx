@@ -1,9 +1,10 @@
 import { ModalsType } from '@constants'
 import { logout, setModal } from '@store'
-import { Button } from 'antd'
+import { Avatar, Button, Dropdown, Menu } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { AiOutlineUser } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 
 type Props = {
@@ -14,17 +15,31 @@ type Props = {
 type ModalAuth = ModalsType.LOGIN | ModalsType.REGISTER
 
 const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
-  const dispatch = useDispatch()
   const router = useRouter()
-
-  const handleClickAuth = (type: ModalAuth) => {
-    dispatch(setModal({ modalName: type }))
-  }
+  const dispatch = useDispatch()
 
   const handleLogout = () => {
     dispatch(logout({}))
     window.location.href = '/'
   }
+
+  const handleClickAuth = (type: ModalAuth) => {
+    dispatch(setModal({ modalName: type }))
+  }
+
+  const UserMenu = (
+    <Menu>
+      <Menu.Item key="0">
+        <Link href="/profile">
+          {currentUser?.firstName + ' ' + currentUser?.lastName}
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="1">Cài đặt</Menu.Item>
+      <Menu.Item key="2" onClick={handleLogout}>
+        Đăng xuất
+      </Menu.Item>
+    </Menu>
+  )
 
   return (
     <nav className="navbar">
@@ -39,8 +54,29 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
         </Link>
       </div>
 
+      {currentUser && (
+        <ul>
+          <li>
+            <Link href="/todos">Todo</Link>
+          </li>
+        </ul>
+      )}
+
       {currentUser ? (
-        <Button onClick={handleLogout}>Đăng xuất</Button>
+        <Dropdown
+          overlay={UserMenu}
+          placement="bottomLeft"
+          trigger={['click']}
+          arrow
+        >
+          <Avatar
+            size="default"
+            src={currentUser.avatar}
+            style={{ cursor: 'pointer' }}
+          >
+            {currentUser.firstName.charAt(0).toUpperCase()}
+          </Avatar>
+        </Dropdown>
       ) : (
         <>
           {!['/login', '/register'].includes(router.route) && (
