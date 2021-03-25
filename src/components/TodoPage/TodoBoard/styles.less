@@ -1,0 +1,48 @@
+.todo-board-container {
+  height: 100vh;
+
+  .task-columns {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+
+    .task-column {
+      min-width: 300px;
+      max-width: 300px;
+
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: white;
+      padding: 5px 10px;
+      margin: 0 10px;
+
+      .task-list {
+        min-height: 50px;
+        // transition: background-color 0.2s ease;
+
+        &.is-dragging-over {
+          background-color: aqua;
+        }
+
+        .task-item {
+          display: flex;
+          margin-top: 10px;
+          padding: 10px 15px;
+          border: 1px solid rgba(0, 0, 0, 0.171);
+          background-color: white;
+
+          .handle {
+            width: 20px;
+            height: 20px;
+            background-color: brown;
+            border-radius: 2px;
+          }
+
+          &.is-dragging {
+            background-color: aquamarine;
+          }
+        }
+      }
+    }
+  }
+}

@@ -16,6 +16,19 @@ const initialState: TodoState = {
         { id: 'task-2', content: 'Hello World 2' },
         { id: 'task-3', content: 'Hello World 3' },
         { id: 'task-4', content: 'Hello World 4' },
+        { id: 'task-5', content: 'Hello World 4' },
+        { id: 'task-6', content: 'Hello World 4' },
+        { id: 'task-7', content: 'Hello World 4' },
+        { id: 'task-8', content: 'Hello World 4' },
+        { id: 'task-9', content: 'Hello World 4' },
+        { id: 'task-10', content: 'Hello World 4' },
+        { id: 'task-11', content: 'Hello World 4' },
+        { id: 'task-12', content: 'Hello World 4' },
+        {
+          id: 'task-13',
+          content:
+            'Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4Hello World 4',
+        },
       ],
     },
     'column-2': {

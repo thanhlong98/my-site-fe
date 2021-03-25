@@ -11,6 +11,7 @@ type Props = {
   hasHeader?: boolean
   hasFooter?: boolean
   mode?: 'light' | 'dark'
+  classNameMain?: string
 }
 
 export const MasterLayout: React.FC<Props> = ({
@@ -18,6 +19,7 @@ export const MasterLayout: React.FC<Props> = ({
   hasHeader = true,
   hasFooter = true,
   mode = 'light',
+  classNameMain = '',
 }) => {
   const { me } = useAuth()
   const { modalName } = useSelector((state: RootState) => state.share)
@@ -27,7 +29,7 @@ export const MasterLayout: React.FC<Props> = ({
     <>
       {hasHeader && <HeaderLayout mode={mode} currentUser={me} />}
 
-      <main className="">{children}</main>
+      <main className={`${classNameMain}`}>{children}</main>
 
       {hasFooter && <FooterLayout />}
 

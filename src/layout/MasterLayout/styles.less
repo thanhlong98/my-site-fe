@@ -2,13 +2,23 @@
 @import '~antd/lib/style/index';
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: @header-height;
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px 10px;
-  height: @header-height;
+  background-color: #fff;
   border-bottom: 1px solid #00000021;
   box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+}
+
+.section-one {
+  padding-top: @header-height;
 }
 
 .make-padding-navbar(@minWidth, @breakpoint) {
@@ -23,4 +33,4 @@
 .make-padding-navbar(@screen-sm-min, 5px 15px);
 .make-padding-navbar(@screen-md-min, 5px 20px);
 .make-padding-navbar(@screen-lg-min, 5px 25px);
-.make-padding-navbar(@screen-xl-min, 5px 35px);
+// .make-padding-navbar(@screen-xl-min, 5px 25px);

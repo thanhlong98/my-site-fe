@@ -30,9 +30,10 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
   const UserMenu = (
     <Menu>
       <Menu.Item key="0">
-        <Link href="/profile">
-          {currentUser?.firstName + ' ' + currentUser?.lastName}
-        </Link>
+        <div>
+          <p>{currentUser?.firstName + ' ' + currentUser?.lastName}</p>
+          <p>{currentUser?.email}</p>
+        </div>
       </Menu.Item>
       <Menu.Item key="1">Cài đặt</Menu.Item>
       <Menu.Item key="2" onClick={handleLogout}>
