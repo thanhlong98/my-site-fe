@@ -17,7 +17,9 @@ const ProfilePage: NextPage<{}> = () => {
 
   return (
     <MasterLayout>
-      <div className="container">{JSON.stringify(data)}</div>
+      <section className="section-one">
+        <div className="container">{JSON.stringify(data)}</div>
+      </section>
     </MasterLayout>
   )
 }

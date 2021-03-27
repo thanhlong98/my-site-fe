@@ -28,12 +28,25 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
   }
 
   const UserMenu = (
-    <Menu>
+    <Menu className="user-menu">
       <Menu.Item key="0">
-        <div>
-          <p>{currentUser?.firstName + ' ' + currentUser?.lastName}</p>
-          <p>{currentUser?.email}</p>
-        </div>
+        <Link href="/profile">
+          <div className="user-menu__item user-menu__info">
+            <div className="user-menu__info-left">
+              <Avatar
+                size="default"
+                src={currentUser.avatar}
+                style={{ cursor: 'pointer' }}
+              >
+                {currentUser.firstName.charAt(0).toUpperCase()}
+              </Avatar>
+            </div>
+            <div className="user-menu__info-right">
+              <p>{currentUser?.firstName + ' ' + currentUser?.lastName}</p>
+              <p>{currentUser?.email}</p>
+            </div>
+          </div>
+        </Link>
       </Menu.Item>
       <Menu.Item key="1">Cài đặt</Menu.Item>
       <Menu.Item key="2" onClick={handleLogout}>
