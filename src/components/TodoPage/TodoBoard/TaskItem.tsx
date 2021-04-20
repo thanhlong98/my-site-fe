@@ -6,6 +6,18 @@ type Props = {
   task: any
 }
 
+function getStyle(style, snapshot) {
+  if (!snapshot.isDropAnimating) {
+    return style
+  }
+
+  return {
+    ...style,
+    // slowing down the drop because we can
+    transitionDuration: `0.05s`,
+  }
+}
+
 const TaskItem: React.FC<Props> = ({ task, index }) => {
   return (
     <Draggable draggableId={task.id} index={index}>
@@ -15,6 +27,7 @@ const TaskItem: React.FC<Props> = ({ task, index }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          style={getStyle(provided.draggableProps.style, snapshot)}
         >
           <div className="handle"></div>
           {task.content}

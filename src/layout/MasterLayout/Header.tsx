@@ -1,11 +1,10 @@
 import { ModalsType } from '@constants'
-import { logout, setModal } from '@store'
-import { Avatar, Button, Dropdown, Menu } from 'antd'
+import { logout, RootState, setModal } from '@store'
+import { Avatar, Dropdown, Menu } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { AiOutlineUser } from 'react-icons/ai'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 type Props = {
   mode?: 'light' | 'dark'
@@ -19,7 +18,7 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    dispatch(logout({}))
+    dispatch(logout())
     window.location.href = '/'
   }
 
@@ -35,10 +34,10 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
             <div className="user-menu__info-left">
               <Avatar
                 size="default"
-                src={currentUser.avatar}
+                src={currentUser?.avatar}
                 style={{ cursor: 'pointer' }}
               >
-                {currentUser.firstName.charAt(0).toUpperCase()}
+                {currentUser?.firstName.charAt(0).toUpperCase()}
               </Avatar>
             </div>
             <div className="user-menu__info-right">
@@ -51,6 +50,18 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
       <Menu.Item key="1">Cài đặt</Menu.Item>
       <Menu.Item key="2" onClick={handleLogout}>
         Đăng xuất
+      </Menu.Item>
+    </Menu>
+  )
+
+  const MainMenu = () => (
+    <Menu mode="horizontal" defaultSelectedKeys={[router.pathname]}>
+      <Menu.Item>ABC</Menu.Item>
+      <Menu.Item key="/profile">
+        <Link href="/profile">Profile</Link>
+      </Menu.Item>
+      <Menu.Item key="/todos">
+        <Link href="/todos">Todo</Link>
       </Menu.Item>
     </Menu>
   )
@@ -68,13 +79,7 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
         </Link>
       </div>
 
-      {currentUser && (
-        <ul>
-          <li>
-            <Link href="/todos">Todo</Link>
-          </li>
-        </ul>
-      )}
+      {currentUser && <MainMenu />}
 
       {currentUser ? (
         <Dropdown
@@ -88,7 +93,7 @@ const HeaderLayout: React.FC<Props> = ({ mode, currentUser }) => {
             src={currentUser.avatar}
             style={{ cursor: 'pointer' }}
           >
-            {currentUser.firstName.charAt(0).toUpperCase()}
+            {currentUser?.firstName?.charAt(0).toUpperCase()}
           </Avatar>
         </Dropdown>
       ) : (

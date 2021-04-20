@@ -3,16 +3,20 @@ import { Button, Col, Input } from 'antd'
 import React, { useRef, useState } from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 import TaskItem from './TaskItem'
-import { FaEllipsisH } from 'react-icons/fa'
+import { FaEllipsisH, FaPlus } from 'react-icons/fa'
 
 type Props = {
   index: number
   column: TodoColumn
 }
 
+const { TextArea } = Input
+
 const TaskColumn: React.FC<Props> = ({ column, index }) => {
   const inputTitleRef = useRef<Input>()
-  const [isClickTitle, setIsClickTitle] = useState(true)
+  const addTaskRef = useRef<Input>()
+  const [isEditTitle, setIsEditTitle] = useState(false)
+  const [isAddTask, setIsAddTask] = useState(false)
 
   return (
     <Draggable draggableId={column.id} index={index}>
@@ -20,31 +24,36 @@ const TaskColumn: React.FC<Props> = ({ column, index }) => {
         <div ref={provided.innerRef} {...provided.draggableProps}>
           <div className="task-column">
             <div
-              className={`task-column__header ${isClickTitle ? 'title' : ''}`}
+              className={`task-column__header ${
+                isEditTitle ? 'edit-title' : ''
+              }`}
               {...provided.dragHandleProps}
             >
-              {/* <h3
+              <h3
                 className="task-column__header-title"
                 onClick={() => {
-                  setIsClickTitle(true)
+                  setIsEditTitle(true)
                   setTimeout(() => {
                     inputTitleRef.current.focus()
                   }, 10)
                 }}
               >
                 {column.title}
-              </h3> */}
+              </h3>
+
               <Input
                 className="task-column__header-title-input"
                 value={column.title}
                 ref={inputTitleRef}
                 autoFocus
                 size="small"
-                onClick={() => setIsClickTitle(false)}
-                onBlur={() => setIsClickTitle(true)}
+                onBlur={() => setIsEditTitle(false)}
               />
 
-              <Button icon={<FaEllipsisH />}></Button>
+              <Button
+                className="task-column__header-title-btn"
+                icon={<FaEllipsisH />}
+              ></Button>
             </div>
 
             <Droppable droppableId={column.id} type="task">
@@ -62,6 +71,29 @@ const TaskColumn: React.FC<Props> = ({ column, index }) => {
                 </div>
               )}
             </Droppable>
+            <div className={`task-add ${isAddTask ? 'add-task' : ''}`}>
+              <p
+                className="task-add__title"
+                onClick={() => {
+                  setIsAddTask(true)
+
+                  setTimeout(() => {
+                    addTaskRef.current.focus()
+                  }, 10)
+                }}
+              >
+                <FaPlus /> Thêm thẻ mới
+              </p>
+
+              <div className="task-add__form">
+                <TextArea
+                  ref={addTaskRef}
+                  className="task-add__input"
+                  minLength={3}
+                />
+                <Button icon={<FaPlus />}>Thêm</Button>
+              </div>
+            </div>
           </div>
         </div>
       )}

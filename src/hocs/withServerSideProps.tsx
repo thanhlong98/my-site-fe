@@ -34,7 +34,7 @@ const withServerSideProps = ({ auth = false } = {}) => (
         user = data?.me
 
         if (error) {
-          user = null
+          console.log('error: ', error)
         }
       } catch (error) {
         console.log(error)
@@ -49,6 +49,7 @@ const withServerSideProps = ({ auth = false } = {}) => (
         },
       }
     }
+
     if (
       user &&
       (context.resolvedUrl.includes('login') ||

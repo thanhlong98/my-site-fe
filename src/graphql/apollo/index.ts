@@ -13,6 +13,7 @@ import merge from 'deepmerge'
 import { IncomingMessage, ServerResponse } from 'http'
 import isEqual from 'lodash/isEqual'
 import { useMemo } from 'react'
+import { errorMiddleware } from './middleware'
 
 export type ResolverContext = {
   req?: IncomingMessage
@@ -61,7 +62,7 @@ function createApolloClient(context?: ResolverContext) {
       )
     : httpLink
 
-  const link = ApolloLink.from([linkSplit])
+  const link = ApolloLink.from([errorMiddleware, linkSplit])
 
   return new ApolloClient({
     ssrMode: isServer,

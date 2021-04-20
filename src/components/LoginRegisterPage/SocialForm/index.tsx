@@ -1,11 +1,17 @@
 import { useMutation } from '@apollo/client'
 import { LOGIN_FACEBOOK } from '@graphql/mutations'
+import { login } from '@store'
 import { Button, Col, notification, Row } from 'antd'
+import { useRouter } from 'next/router'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 
 export const SocialForm = () => {
-  const [loginFacebook] = useMutation(LOGIN_FACEBOOK)
+  const [loginFacebook, { loading: loading1 }] = useMutation(LOGIN_FACEBOOK)
+  const dispatch = useDispatch()
+
+  const router = useRouter()
 
   const responseFacebook = async (response) => {
     try {
@@ -22,7 +28,9 @@ export const SocialForm = () => {
           message: 'Đăng nhập thành công',
         })
 
-        window.location.href = '/'
+        dispatch(login())
+
+        router.push('/')
       }
     } catch (error) {
       console.log(error)

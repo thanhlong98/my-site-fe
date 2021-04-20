@@ -2,6 +2,7 @@
 
 .todo-board-container {
   height: 100vh;
+  font-size: 16px;
 
   .task-columns {
     display: flex;
@@ -22,31 +23,60 @@
       .task-column__header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 10px;
 
-        .task-column__header-title-input {
-          font-size: 20px;
-          cursor: unset;
+        .task-column__header-title {
+          font-size: 18px;
+          width: 100%;
+          margin: 0;
+          padding-left: @input-padding-horizontal-sm;
+          padding-right: @input-padding-horizontal-sm;
+          user-select: none;
         }
 
-        &.title {
-          .task-column__header-title-input {
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-            outline: none;
+        .task-column__header-title-input {
+          font-size: 18px;
+          font-weight: 600;
+          display: none;
 
-            &:hover,
-            &:focus {
-              border: none;
-              outline: none;
-            }
+          &:hover,
+          &:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+          }
+        }
+
+        .task-column__header-title-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          border: 0;
+
+          &:hover,
+          &:focus {
+            color: unset;
+          }
+        }
+
+        &.edit-title {
+          .task-column__header-title {
+            display: none;
+          }
+
+          .task-column__header-title-input {
+            display: inline-block;
+          }
+
+          .task-column__header-title-btn {
           }
         }
       }
 
       .task-column__content {
-        min-height: 50px;
+        min-height: 10px;
 
         &.is-dragging-over {
           background-color: aqua;
@@ -57,9 +87,11 @@
           margin-bottom: 8px;
           padding: 10px 15px;
           // border: 1px solid rgba(0, 0, 0, 0.171);
+          user-select: none;
           background-color: white;
           border-radius: @border-radius-base;
           box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+          cursor: pointer;
 
           .handle {
             width: 20px;
@@ -70,6 +102,32 @@
 
           &.is-dragging {
             background-color: aquamarine;
+          }
+        }
+      }
+
+      .task-add {
+        .task-add__title {
+          margin: 0;
+        }
+
+        .task-add__form {
+          display: none;
+
+          .task-add__input {
+          }
+        }
+
+        &.add-task {
+          .task-add__title {
+            display: none;
+          }
+
+          .task-add__form {
+            display: block;
+
+            .task-add__input {
+            }
           }
         }
       }

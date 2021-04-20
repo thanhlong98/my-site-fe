@@ -1,10 +1,9 @@
-import './styles.less'
 import { TodoColumn } from '@interfaces'
 import { RootState, setColumnOrder, setTasksInColumn } from '@store'
-import { Row } from 'antd'
 import React from 'react'
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
+import './styles.less'
 import TaskColumn from './TaskColumn'
 
 export const TodoBoard: React.FC = () => {
@@ -16,12 +15,14 @@ export const TodoBoard: React.FC = () => {
     if (!destination) {
       return
     }
+
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
       return
     }
+
     if (type === 'column') {
       const newColumnOrder = [...todos.columnOrder]
       newColumnOrder.splice(source.index, 1)
@@ -56,10 +57,12 @@ export const TodoBoard: React.FC = () => {
       ...start,
       tasks: newTasksStarts,
     }
+
     const newColumnFinish = {
       ...finish,
       tasks: newTaskFinishs,
     }
+
     dispatch(setTasksInColumn({ column: newColumnStart }))
     dispatch(setTasksInColumn({ column: newColumnFinish }))
   }
