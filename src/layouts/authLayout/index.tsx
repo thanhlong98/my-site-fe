@@ -5,7 +5,7 @@ export const AuthLayout: React.FC = ({ children }) => {
   return (
     <>
       <LayoutHeader showAction={false} />
-      <main className="container mx-auto">
+      <main>
         <p>Auth Layout</p>
         <div>{children}</div>
       </main>

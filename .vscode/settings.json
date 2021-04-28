@@ -3,5 +3,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "less.validate": false,
+  "scss.validate": false
 }

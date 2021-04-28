@@ -5,7 +5,7 @@ export const MasterLayout: React.FC = ({ children }) => {
   return (
     <>
       <LayoutHeader />
-      <main className="container mx-auto">{children}</main>
+      <main>{children}</main>
     </>
   )
 }

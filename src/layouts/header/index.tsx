@@ -1,26 +1,17 @@
-import React from 'react'
 import Link from 'next/link'
-
-import styles from './Header.module.scss'
+import React from 'react'
 
 interface IProps {
   showAction?: boolean
 }
 
-export const LayoutHeader: React.FC<IProps> = ({ showAction = true }) => {
+export const LayoutHeader: React.FC<IProps> = () => {
   return (
-    <header className="sticky shadow-md">
-      <div className={`${styles['contain']} container mx-auto flex justify-between py-2`}>
+    <header>
+      <div>
         <Link href="/">
-          <img className="cursor-pointer" src="/svg/omg-black.svg" alt="logo" />
+          <img src={`/svg/omg-black.svg`} alt="logo" />
         </Link>
-
-        {showAction && (
-          <div>
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
-          </div>
-        )}
       </div>
     </header>
   )

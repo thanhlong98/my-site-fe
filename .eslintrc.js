@@ -36,6 +36,9 @@ module.exports = {
 
     // react
     'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+
+    //
+    'jsx-a11y/anchor-is-valid': 'off'
   }
 }
