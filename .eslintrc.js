@@ -37,6 +37,7 @@ module.exports = {
     // react
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
 
     //
     'jsx-a11y/anchor-is-valid': 'off'

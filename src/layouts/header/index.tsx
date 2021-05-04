@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import styles from './header.module.scss'
 
 interface IProps {
   showAction?: boolean
@@ -7,8 +8,8 @@ interface IProps {
 
 export const LayoutHeader: React.FC<IProps> = () => {
   return (
-    <header>
-      <div>
+    <header className="">
+      <div className="">
         <Link href="/">
           <img src={`/svg/omg-black.svg`} alt="logo" />
         </Link>
