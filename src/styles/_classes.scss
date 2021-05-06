@@ -1,0 +1,7 @@
+.omg-layout-container {
+  @apply container mx-auto px-[var(--layout-padding-horizontal)];
+}
+
+.section-first {
+  @apply pt-[var(--header-height)];
+}

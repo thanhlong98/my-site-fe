@@ -5,7 +5,7 @@ export const MasterLayout: React.FC = ({ children }) => {
   return (
     <>
       <LayoutHeader />
-      <main>{children}</main>
+      <main className="min-h-screen">{children}</main>
     </>
   )
 }

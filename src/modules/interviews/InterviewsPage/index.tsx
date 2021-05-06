@@ -4,11 +4,9 @@ import React from 'react'
 export const InterviewsPage: React.FC = () => {
   return (
     <MasterLayout>
-      <div className="page-content-inner">
-        <section className="container section-container">
-          <div>Interviews Page</div>
-        </section>
-      </div>
+      <section className="omg-layout-container section-first">
+        <div>Interviews Page</div>
+      </section>
     </MasterLayout>
   )
 }
